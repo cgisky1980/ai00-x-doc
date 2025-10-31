@@ -2,6 +2,7 @@ import { defineUserConfig } from 'vuepress'
 // 切换到 webpack 打包器以绕过 Vite SSR 对 CSS 的限制
 import { viteBundler } from '@vuepress/bundler-vite'
 import { defaultTheme } from '@vuepress/theme-default'
+import giscusPluginPkg from 'vuepress-plugin-giscus'
 import path from 'node:path'
 
 export default defineUserConfig({
@@ -10,6 +11,22 @@ export default defineUserConfig({
   description: 'Ai00-X 项目文档与设计规划',
   // 让站点在 GitHub Pages 的仓库子路径下正常工作，如 https://<org>.github.io/<repo>/
   base: process.env.VUEPRESS_BASE ?? '/',
+  plugins: [
+    // 按环境变量启用 Giscus 评论插件，未配置时不加载以避免构建错误
+    ...(process.env.GISCUS_REPO && process.env.GISCUS_REPO_ID && process.env.GISCUS_CATEGORY && process.env.GISCUS_CATEGORY_ID
+      ? [
+          (giscusPluginPkg as any).giscusPlugin({
+            repo: process.env.GISCUS_REPO!,
+            repoId: process.env.GISCUS_REPO_ID!,
+            category: process.env.GISCUS_CATEGORY!,
+            categoryId: process.env.GISCUS_CATEGORY_ID!,
+            mapping: 'pathname',
+            reactionsEnabled: true,
+            lang: 'zh-CN',
+          }),
+        ]
+      : []),
+  ],
   bundler: viteBundler({
     viteOptions: {
       resolve: {
