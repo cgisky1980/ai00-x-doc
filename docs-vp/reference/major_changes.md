@@ -56,3 +56,8 @@ title: 重大变更记录（Ai00-X）
 - 配置更新：在 `docs-vp/.vuepress/config.ts` 增加 `base: process.env.VUEPRESS_BASE ?? '/'`，便于 GitHub Pages 仓库子路径部署。
 - 部署工作流：新增 `.github/workflows/deploy-pages.yml`，推送到 `main` 自动构建并发布到 Pages。
 - 部署说明：在 `reference/deployment.md` 与 `docs-vp/reference/deployment.md` 补充部署文档与维护建议。
+
+### 2025-10-31 首页改版与旧链接清理
+
+- 首页改版：将 `docs-vp/README.md` 更新为默认主题主页布局（`home: true`），添加 `actions` 与 `features`，提升入口可见性与信息密度。
+- 链接清理：在根级侧边栏移除旧版链接 `'/game_design_document.html'`，统一从 `'/gdd/'` 进入纲要章节结构。
