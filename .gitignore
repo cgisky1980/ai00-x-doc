@@ -1,0 +1,18 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Node.js
+node_modules/
+
+# VuePress temp/cache/build outputs
+docs-vp/.vuepress/.temp/
+docs-vp/.vuepress/.cache/
+docs-vp/.vuepress/dist/

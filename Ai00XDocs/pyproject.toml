@@ -1,0 +1,16 @@
+[project]
+name = "ai00xdocs"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "顾真牛", email = "82481660+cgisky1980@users.noreply.github.com" }
+]
+requires-python = ">=3.13"
+dependencies = []
+
+[project.scripts]
+ai00xdocs = "ai00xdocs:main"
+
+[build-system]
+requires = ["uv_build>=0.9.1,<0.10.0"]
+build-backend = "uv_build"
