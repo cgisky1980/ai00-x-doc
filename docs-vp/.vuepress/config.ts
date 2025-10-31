@@ -3,6 +3,7 @@ import { defineUserConfig } from 'vuepress'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { defaultTheme } from '@vuepress/theme-default'
 import giscusPluginPkg from 'vuepress-plugin-giscus'
+import { blogPlugin } from '@vuepress/plugin-blog'
 import path from 'node:path'
 
 export default defineUserConfig({
@@ -26,6 +27,22 @@ export default defineUserConfig({
           }),
         ]
       : []),
+    // 博客插件：收集文章信息（后续可按需增加分类与类型）
+    blogPlugin({
+      filter: ({ filePathRelative, frontmatter }) => {
+        if (!filePathRelative) return false
+        if (frontmatter.home || frontmatter.layout) return false
+        return true
+      },
+      getInfo: ({ frontmatter, title, git = {}, data = {} }) => ({
+        title,
+        author: (frontmatter as any).author || '',
+        categories: (frontmatter as any).categories || [],
+        date: (frontmatter as any).date || (git as any).createdTime || null,
+        tags: (frontmatter as any).tags || [],
+        excerpt: (data as any).excerpt || '',
+      }),
+    }),
   ],
   bundler: viteBundler({
     viteOptions: {
@@ -51,6 +68,7 @@ export default defineUserConfig({
     navbar: [
       { text: '首页', link: '/' },
       { text: '纲要', link: '/gdd/' },
+      { text: '博客', link: '/blog/' },
       {
         text: '参考',
         children: [
