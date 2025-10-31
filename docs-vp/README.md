@@ -6,8 +6,6 @@ actions:
   - text: 开始阅读纲要
     link: /gdd/
     type: primary
-  - text: 部署参考
-    link: /reference/deployment.html
 features:
   - title: 设计纲要
     details: 覆盖核心概念、玩法机制、交互系统、技术架构、商业模式等。

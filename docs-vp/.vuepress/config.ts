@@ -61,7 +61,6 @@ export default defineUserConfig({
       '/reference/': [
         { text: '社交GE数值规范 v0.1', link: '/reference/social_ge.html' },
         { text: '起源与使命笔记', link: '/reference/notes_origin_mission.html' },
-        { text: '部署说明', link: '/reference/deployment.html' },
         { text: '重大变更记录', link: '/reference/major_changes.html' },
       ],
       '/': [
