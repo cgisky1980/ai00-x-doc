@@ -66,7 +66,6 @@ export default defineUserConfig({
       ],
       '/': [
         { text: '首页', link: '/' },
-        { text: '纲要（旧版）', link: '/game_design_document.html' },
       ],
     },
   }),
